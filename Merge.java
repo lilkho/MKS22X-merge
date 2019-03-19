@@ -7,11 +7,11 @@ public class Merge {
     mergesort(data,0,data.length-1);
   }
   private static void mergesort(int[]data,int lo,int hi) {
-    if (lo>=hi) return;
     System.out.println(lo+" "+hi);
     System.out.println(mid(lo,hi));
     int[] con = converge(data,lo,hi);
     System.out.println(Arrays.toString(con));
+    if (lo>=hi) return;
     mergesort(data,lo,mid(lo,hi));
     mergesort(data,mid(lo,hi)+1,hi);
     merge(data,lo,hi);
@@ -20,11 +20,11 @@ public class Merge {
 
   }
   private static int mid(int lo,int hi) {
-    return (hi-lo)/2;
+    return lo+(hi-lo)/2;
   }
   private static int[] converge(int[] data,int lo, int hi) {
-    int[] con = new int[hi-lo];
-    for (int i=0;i<hi-lo;i++) {
+    int[] con = new int[hi-lo+1];
+    for (int i=0;i<=hi-lo;i++) {
       con[i]=data[lo+i];
     }
     return con;
