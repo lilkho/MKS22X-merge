@@ -45,6 +45,17 @@ public class Merge {
     }
     return con;
   }
+  public static void insertionSort(int[] data) {
+    for (int i=1;i<data.length;++i) {
+      int current = data[i];
+      int j=i;
+      while (j-1>=0 && current<data[j-1]) {
+        data[j]=data[j-1];
+        --j;
+      }
+      data[j]=current;
+    }
+  }
   public static void main(String[] args) {
     int[] data = {38,27,43,3,9,82,10};
     mergesort(data);
