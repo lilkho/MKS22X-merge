@@ -7,7 +7,7 @@ public class Merge {
     mergesort(data,0,data.length-1);
   }
   private static void mergesort(int[]data,int lo,int hi) {
-    int mid = mid(lo,hi);
+    int mid = lo+(hi-lo)/2;
     int[] left = converge(data,lo,mid);
     int[] right = converge(data,mid+1,hi);
     if (lo>=hi) return;
@@ -34,9 +34,6 @@ public class Merge {
         data[i]=right[r];
       }
     }
-  }
-  private static int mid(int lo,int hi) {
-    return lo+(hi-lo)/2;
   }
   private static int[] converge(int[] data,int lo, int hi) {
     int[] con = new int[hi-lo+1];
