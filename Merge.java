@@ -7,14 +7,14 @@ public class Merge {
     mergesort(data,0,data.length-1);
   }
   private static void mergesort(int[]data,int lo,int hi) {
-    int mid = lo+(hi-lo)/2;
+    int mid = lo+(hi-lo)/2; // middle value
     if (lo>=hi) return;
+    //left and right, splitting from middle value
     mergesort(data,lo,mid);
     mergesort(data,mid+1,hi);
     int[] left = converge(data,lo,mid);
     int[] right = converge(data,mid+1,hi);
     merge(data,left,right,lo,hi);
-    System.out.println(Arrays.toString(data));
   }
   private static void merge(int[] data,int[] left, int[] right, int lo, int hi) {
     int l = 0;int r = 0;
@@ -37,6 +37,7 @@ public class Merge {
       }
     }
   }
+  /*returns an array based on values between index lo and index hi*/
   private static int[] converge(int[] data,int lo, int hi) {
     int[] con = new int[hi-lo+1];
     for (int i=0;i<=hi-lo;i++) {
