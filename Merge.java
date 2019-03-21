@@ -7,8 +7,6 @@ public class Merge {
     mergesort(data,0,data.length-1);
   }
   private static void mergesort(int[]data,int lo,int hi) {
-    System.out.println(lo+" "+hi);
-    System.out.println(mid(lo,hi));
     int mid = mid(lo,hi);
     int[] left = converge(data,lo,mid);
     int[] right = converge(data,mid+1,hi);
@@ -16,11 +14,26 @@ public class Merge {
     mergesort(data,lo,mid);
     mergesort(data,mid+1,hi);
     merge(data,left,right);
-    System.out.println(Arrays.toString(left));
-    System.out.println(Arrays.toString(right));
+    System.out.println(Arrays.toString(data));
   }
   private static void merge(int[] data,int[] left, int[] right) {
-
+    int l = 0;int r = 0;
+    for (int i=0;i<left.length;i++) {
+      if (l<left.length && r<right.length) {
+        if (left[l]>right[r]) {
+          data[i]=left[l];
+          l++;
+        }
+        else {
+          data[i]=right[r];
+          r++;
+        }
+      } else if (l<left.length) {
+        data[i]=left[l];
+      } else if (r<right.length){
+        data[i]=right[r];
+      }
+    }
   }
   private static int mid(int lo,int hi) {
     return lo+(hi-lo)/2;
