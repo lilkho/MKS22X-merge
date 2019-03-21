@@ -9,17 +9,18 @@ public class Merge {
   private static void mergesort(int[]data,int lo,int hi) {
     System.out.println(lo+" "+hi);
     System.out.println(mid(lo,hi));
-    int[] temp = new int[data.length()];
+    int mid = mid(lo,hi);
+    int[] left = converge(data,lo,mid);
+    int[] right = converge(data,mid+1,hi);
     if (lo>=hi) return;
-    mergesort(data,lo,mid(lo,hi));
-    mergesort(data,mid(lo,hi)+1,hi);
-    merge(temp,lo,hi);
-    System.out.println(Arrays.toString(temp));
+    mergesort(data,lo,mid);
+    mergesort(data,mid+1,hi);
+    merge(data,left,right);
+    System.out.println(Arrays.toString(left));
+    System.out.println(Arrays.toString(right));
   }
-  private static void merge(int[] data,int lo,int hi) {
-    for (int i=0;i<=hi-lo;i++) {
-    }
-    data[i]=data[lo+i];
+  private static void merge(int[] data,int[] left, int[] right) {
+
   }
   private static int mid(int lo,int hi) {
     return lo+(hi-lo)/2;
