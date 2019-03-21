@@ -8,19 +8,19 @@ public class Merge {
   }
   private static void mergesort(int[]data,int lo,int hi) {
     int mid = lo+(hi-lo)/2;
-    int[] left = converge(data,lo,mid);
-    int[] right = converge(data,mid+1,hi);
     if (lo>=hi) return;
     mergesort(data,lo,mid);
     mergesort(data,mid+1,hi);
-    merge(data,left,right);
+    int[] left = converge(data,lo,mid);
+    int[] right = converge(data,mid+1,hi);
+    merge(data,left,right,lo,hi);
     System.out.println(Arrays.toString(data));
   }
-  private static void merge(int[] data,int[] left, int[] right) {
+  private static void merge(int[] data,int[] left, int[] right, int lo, int hi) {
     int l = 0;int r = 0;
-    for (int i=0;i<left.length;i++) {
+    for (int i=lo;i<=hi;i++) {
       if (l<left.length && r<right.length) {
-        if (left[l]>right[r]) {
+        if (left[l]<right[r]) {
           data[i]=left[l];
           l++;
         }
@@ -30,8 +30,10 @@ public class Merge {
         }
       } else if (l<left.length) {
         data[i]=left[l];
+        l++;
       } else if (r<right.length){
         data[i]=right[r];
+        r++;
       }
     }
   }
